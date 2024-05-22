@@ -13,6 +13,8 @@ move .\MultithreadedGenerativeSearchV4WithInput\MultithreadedGenerativeSearchV4W
 ```
 # Finding a bait cover
 The program takes in a "modified" fasta file, megaresParitions/megaresClean25E4.txt
+
+The input reading is done with c++ cin
 ```
 .\MultithreadedGenerativeSearchV4WithInput.exe
 120
@@ -66,6 +68,8 @@ Afterwards, type in the output location:
 ```
 megaresPartitions\megaresClean25E4.txt
 ```
+And we have restored the file we deleted
+
 By "around", the program will count 250000 nucleotides, and if it ends in the middle of a sequence, it will include the rest of the current sequence.
 
 If you want to include the entire sequence, put -1 as the length
