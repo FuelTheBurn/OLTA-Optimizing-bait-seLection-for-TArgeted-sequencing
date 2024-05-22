@@ -56,4 +56,6 @@ And now recreate it:
 megares_database_v3.00.fasta
 megaresPartitions\megaresClean25E4.txt
 ```
-By "around", the program will count 250000 nucleotides, and if it ends in the middle of a sequence, it will include the rest of the sequence
+By "around", the program will count 250000 nucleotides, and if it ends in the middle of a sequence, it will include the rest of the current sequence.
+
+If you want to include the entire sequence, put -1 as the length
