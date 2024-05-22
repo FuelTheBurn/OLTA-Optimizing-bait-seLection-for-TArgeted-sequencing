@@ -17,7 +17,13 @@ move .\MultithreadedGenerativeSearchV4WithInput\MultithreadedGenerativeSearchV4W
 10
 10
 2
-megaresParitions/megaresClean25E4.txt
+megaresParitions\megaresClean25E4.txt
 output.txt
 Time measured: 2.327 seconds
-syottiClusters 457
+Baits/Centroids: 457
+
+g++ -Wall -g -O2 -o dataCleaning dataCleaning.cpp
+Ignore the warnings, as long as none of them are fatal
+
+del .\megaresPartitions\megaresClean25E4.txt
+
