@@ -41,6 +41,8 @@ Time measured: 2.327 seconds
 Baits/Centroids: 457
 ```
 This means that the program has found a bait covering with 457 baits.
+
+output.txt contains the baits, it is now 457 lines long, and each line has 120 characters
 # The "modified" fasta file
 To turn your fasta file into a modified fasta file compile dataCleaning:
 ```
