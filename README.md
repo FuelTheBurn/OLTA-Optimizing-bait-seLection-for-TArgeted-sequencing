@@ -6,6 +6,7 @@ cd MultithreadedGenerativeSearchV4WithInput
 g++ -Wall -g -O2 -pthread -o MultithreadedGenerativeSearchV4WithInput main.cpp
 ```
 Ignore the warnings, as long as none of them are fatal
+
 I wrote MultithreadedGenerativeSearchV4WithInput as a CLion project, so we need to move our executable outside
 ```
 cd ..
