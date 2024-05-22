@@ -15,6 +15,8 @@ move .\MultithreadedGenerativeSearchV4WithInput\MultithreadedGenerativeSearchV4W
 The program takes in a "modified" fasta file, megaresParitions/megaresClean25E4.txt
 
 The input reading is done with c++ cin
+
+The following input is suboptimal for the least number of baits/fast for demonstration purposes, to know what inputs you should use, read the paper
 ```
 .\MultithreadedGenerativeSearchV4WithInput.exe
 120
@@ -37,7 +39,6 @@ Time measured: 2.327 seconds
 Baits/Centroids: 457
 ```
 This means that the program has found a bait covering with 457 baits.
-
 # The "modified" fasta file
 To turn your fasta file into a modified fasta file compile dataCleaning:
 ```
@@ -73,3 +74,5 @@ And we have restored the file we deleted
 By "around", the program will count 250000 nucleotides, and if it ends in the middle of a sequence, it will include the rest of the current sequence.
 
 If you want to include the entire sequence, put -1 as the length
+
+If you want to automate these processes, or confirm that the baits generated actually cover the sequence 100%, open up this project in anaconda prompt and look at the jupyter notebook.
