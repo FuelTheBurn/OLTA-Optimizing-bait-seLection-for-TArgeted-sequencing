@@ -50,7 +50,7 @@ g++ -Wall -g -O2 -o dataCleaning dataCleaning.cpp
 ```
 Ignore the warnings, as long as none of them are fatal
 
-Now, I will recreate megaresPartitions\megaresClean25E4.txt, which is the first around 250000 nucleotides from megares_database_v3.00.fasta, from [https://www.meglab.org/megares](https://www.meglab.org/megares)
+Now, I will recreate megaresPartitions\megaresClean25E4.txt, which is the first around 250000 nucleotides from megares_database_v3.00.fasta, from [https://www.meglab.org/megares](https://www.meglab.org/megares) (need to add citation for data sets)
 
 So let's delete megaresPartitions\megaresClean25E4.txt first:
 ```
