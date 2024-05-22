@@ -12,7 +12,7 @@ cd ..
 move .\MultithreadedGenerativeSearchV4WithInput\MultithreadedGenerativeSearchV4WithInput.exe .
 ```
 # Finding a bait cover
-The program takes in a "modified" fasta file, megaresParitions/megaresClean25E4.txt
+The program takes in a "modified" fasta file, in this example, it is megaresParitions/megaresClean25E4.txt
 
 The input reading is done with c++ cin
 
