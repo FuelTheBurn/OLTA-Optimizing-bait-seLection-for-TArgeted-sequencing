@@ -54,6 +54,16 @@ And now recreate it:
 .\dataCleaning.exe
 250000
 megares_database_v3.00.fasta
+```
+Now there will be a wall of print statements, and at the end, the program might display something like:
+```
+ERROR! some values not ACGT
+problem amount 30
+```
+This error is fine, it just means that there are nucleotides in the fasta file that are not ACGT, and the program will replace them with N, representing an unknown nucleotide
+
+Afterwards, type in the output location:
+```
 megaresPartitions\megaresClean25E4.txt
 ```
 By "around", the program will count 250000 nucleotides, and if it ends in the middle of a sequence, it will include the rest of the current sequence.
