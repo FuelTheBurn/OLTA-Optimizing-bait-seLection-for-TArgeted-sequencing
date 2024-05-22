@@ -184,6 +184,7 @@ void writeOutput(){//first line is the DNA
 	//next line is N, number of baits
 	//next N lines are the baits
 	string opFile="megaresClean2E6.txt";
+	cin>>opFile;
     ofstream outputFile(opFile);
 
     // Check if the file is open
