@@ -881,7 +881,7 @@ int main(){
     elapsed = double(end - start)/CLOCKS_PER_SEC;
 
     printf("Time measured: %.3f seconds\n", elapsed);
-    cout<<"syottiClusters "<<compressedCovers.size()<<endl;
+    cout<<"Baits/Centroids: "<<compressedCovers.size()<<endl;
     cout<<"average cluster size with no overlap"<<DNALength/(compressedCovers.size()*1.0)<<endl;
 
     uncompress();
