@@ -20,8 +20,21 @@ The input reading is done with c++ cin
 
 The following input is suboptimal for the least number of baits/fast for demonstration purposes, to know what inputs you should use, read the paper
 ```
-.\MultithreadedGenerativeSearchV4WithInput.exe 120 40 80 80 1 40 4 10 10 10 2 megaresParitions/megaresClean25E4.txt output.txt
+.\MultithreadedGenerativeSearchV4WithInput.exe
+120
+40
+80
+80
+1
+40
+4
+10
+10
+10
+2
+megaresParitions/megaresClean25E4.txt output.txt
 ```
+NOTE: DO NOT TYPE EVERYTHING ON ONE LINE, IT WONT WORK
 In the wall of print statements, towards the end, you should see something that looks like this:
 ```
 Time measured: 2.327 seconds
