@@ -1,7 +1,7 @@
 # generative-bait-clustering
 Finds a bait cover that covers 100% of a given sequence.
 # How to set up on Windows:
-Clone the repo. Inside of it do the following:
+Clone the repo. Inside of the generative-bait-clustering folder do the following:
 ```
 cd MultithreadedGenerativeSearchV4WithInput
 g++ -Wall -g -O2 -pthread -o MultithreadedGenerativeSearchV4WithInput main.cpp
