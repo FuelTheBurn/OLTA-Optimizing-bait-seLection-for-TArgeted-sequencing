@@ -64,6 +64,8 @@ And now recreate it:
 250000
 megares_database_v3.00.fasta
 ```
+NOTE: AGAIN, DO NOT TYPE EVERYTHING ON ONE LINE, IT WON'T WORK
+
 Now there will be a wall of print statements, and at the end, the program might display something like:
 ```
 ERROR! some values not ACGT
