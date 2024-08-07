@@ -4,7 +4,7 @@ Finds a bait cover that covers 100% of a given sequence.
 Clone the repo. Inside of the generative-bait-clustering folder do the following:
 ```
 cd MultithreadedGenerativeSearchV4WithInput
-g++ -Wall -g -O2 -pthread -o MultithreadedGenerativeSearchV4WithInput main.cpp
+g++ -O2 -pthread -o MultithreadedGenerativeSearchV4WithInput main.cpp
 ```
 Ignore the warnings, as long as none of them are fatal
 
@@ -48,7 +48,7 @@ output.txt contains the baits, it is now 457 lines long, and each line has 120 c
 # The "modified" fasta file
 To turn your fasta file into a modified fasta file compile dataCleaning:
 ```
-g++ -Wall -g -O2 -o dataCleaning dataCleaning.cpp
+g++ -O2 -o dataCleaning dataCleaning.cpp
 ```
 Ignore the warnings, as long as none of them are fatal
 
@@ -82,5 +82,18 @@ And we have restored the file we deleted
 By "around", the program will count 250000 nucleotides, and if it ends in the middle of a sequence, it will include the rest of the current sequence.
 
 If you want to include the entire sequence, put -1 as the length
+
+If you want to number the probes (assign them IDs), first compile numberProbes.cpp
+
+```
+g++ -O2 -o numberProbes numberProbes.cpp
+```
+Then run it by
+```
+.\numberProbes
+output.txt
+numberedOutput.txt
+```
+NOTE: AGAIN, DO NOT TYPE EVERYTHING ON ONE LINE, IT WON'T WORK
 
 If you want to automate these processes, or confirm that the baits generated actually cover the sequence 100%, open up this project in anaconda prompt and look at the jupyter notebook.
