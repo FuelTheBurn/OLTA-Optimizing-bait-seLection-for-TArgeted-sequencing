@@ -32,7 +32,8 @@ The following input is suboptimal for the least number of baits/fast for demonst
 10
 10
 2
-megaresParitions/megaresClean25E4.txt output.txt
+megaresParitions/megaresClean25E4.txt
+output.txt
 ```
 NOTE: DO NOT TYPE EVERYTHING ON ONE LINE, IT WON'T WORK
 
