@@ -25,7 +25,7 @@ The following input is suboptimal for the least number of baits/fast for demonst
 40
 80
 80
-1
+5
 40
 4
 10
@@ -39,12 +39,31 @@ NOTE: DO NOT TYPE EVERYTHING ON ONE LINE, IT WON'T WORK
 
 In the wall of print statements, towards the end, you should see something that looks like this:
 ```
-Time measured: 2.327 seconds
-Baits/Centroids: 457
+Time measured: 6.073 seconds
+Baits/Centroids: 422
 ```
 This means that the program has found a bait covering with 457 baits.
 
 output.txt contains the baits, it is now 457 lines long, and each line has 120 characters
+
+Explanation of the inputs:
+```
+.\MultithreadedGenerativeSearchV4WithInput.exe
+120 -> Bait length
+40 -> Hamming distance mismatch tolerance
+80 -> Lenient radius, set this to 2 x (Hamming distance mismatch tolerance)
+80 -> Lenient radius 2, set this to 2 x (Hamming distance mismatch tolerance)
+5 -> Bucket size, THIS ONE MATTERS MOST, EXPLANATION BELOW
+40 -> Bypass hyperparameter, set this one to (Hamming distance mismatch tolerance)
+4 -> Number of search breadths/branching factors (Just keep these as constants)
+10 -> First search breadth/branching factor
+10 -> Second search breadth/branching factor
+10 -> Third search breadth/branching factor
+2 -> Fourth search breadth/branching factor
+megaresPartitions/megaresClean25E4.txt -> Input file
+output.txt -> Output file
+```
+There is a bait-time trade-off that can be adjusted depending on whether there is a need to reduce baits or reduce the running time by changing the bucket size. For our test configuration of bait length 120 and mismatch tolerance 40, the minimum number of baits occurs at bucket size 30. Run time is the least at bucket size 1 and is positively correlated with bucket size. For bait length 60 and mismatch tolerance 6, the number of baits is the least around bucket size 10. For other bait lengths and mismatch tolerances, play around.
 # The "modified" fasta file
 To turn your fasta file into a modified fasta file compile dataCleaning:
 ```
