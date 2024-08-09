@@ -1,4 +1,4 @@
-# generative-bait-clustering
+# OLTA: Optimizing bait seLection for TArgeted sequencing
 Finds a bait cover that covers 100% of a given sequence.
 # How to set up on Windows:
 Clone the repo. Inside of the generative-bait-clustering folder do the following:
