@@ -36,7 +36,7 @@ void writeOutput() {
         return;
     }
     if(stringDNA.size()>=100000000){
-    	cerr<<"error, more than 100000000 baits"<<endl;
+    	std::cerr<<"error, more than 100000000 baits"<<std::endl;
     }
     // First line is the DNA
     for (int i = 0; i < stringDNA.size(); ++i) {
