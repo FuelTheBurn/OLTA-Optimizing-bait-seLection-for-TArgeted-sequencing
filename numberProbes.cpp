@@ -35,7 +35,9 @@ void writeOutput() {
         std::cerr << "Unable to open the file." << std::endl;
         return;
     }
-
+    if(stringDNA.size()>=100000000){
+    	cerr<<"error, more than 100000000 baits"<<endl;
+    }
     // First line is the DNA
     for (int i = 0; i < stringDNA.size(); ++i) {
         outputFile << "probe-" << std::setw(8) << std::setfill('0') << i << endl;
