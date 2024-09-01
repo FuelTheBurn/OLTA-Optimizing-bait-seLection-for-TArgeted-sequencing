@@ -676,7 +676,7 @@ void readInFile(){
             }
         }
         if(fileData.size()!=line.size()){
-            cerr<<" i dont even know anymore"<<endl;
+            cerr<<" the fileData size and line size don't match"<<endl;
         }
         stringDNA.pb(fileData);
     }
