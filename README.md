@@ -68,7 +68,7 @@ output.txt -> Output file
 There is a bait-time trade-off that can be adjusted depending on whether there is a need to reduce baits or reduce the running time by changing the bucket size. For our test configuration of bait length 120 and mismatch tolerance 40, the minimum number of baits occurs at bucket size 30. Run time is the least at bucket size 1 and is positively correlated with bucket size. For bait length 60 and mismatch tolerance 6, the number of baits is the least around bucket size 10. For other bait lengths and mismatch tolerances, play around.
 # The "modified" fasta file
 
-The "modified" fasta files strips the sequence names, makes everything uppercase, and sets any non-ACTG nucleotide to N
+The "modified" fasta file strips the sequence names, makes everything uppercase, and sets any non-ACTG nucleotide to N
 
 To turn your fasta file into a modified fasta file compile dataCleaning:
 ```
