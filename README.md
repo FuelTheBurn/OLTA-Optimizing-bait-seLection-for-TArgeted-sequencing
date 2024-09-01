@@ -16,6 +16,8 @@ move .\MultithreadedGenerativeSearchV4WithInput\MultithreadedGenerativeSearchV4W
 # Finding a bait cover
 The program takes in a "modified" fasta file, in this example, it is megaresParitions/megaresClean25E4.txt
 
+NOTE, THIS TAKES DOES NOT TAKE IN A FASTA FILE, I WILL EXPLAIN LATER HOW TO CONVERT A FASTA FILE TO A "MODIFIED" FASTA FILE
+
 The input reading is done with c++ cin
 
 The following input is suboptimal for the least number of baits/fast for demonstration purposes, to know what inputs you should use, read the paper
