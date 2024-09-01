@@ -117,6 +117,6 @@ numberedOutput.txt
 ```
 NOTE: AGAIN, DO NOT TYPE EVERYTHING ON ONE LINE, IT WON'T WORK
 
-If you want to automate these processes, find that the typing of these commands becomes too tedious, or confirm that the baits generated actually cover the sequence 100%, open up this project in anaconda prompt and look at the jupyter notebook, BaitCoverNotebook.ipynb.
+If you want to automate these processes, do the fasta conversion and run the main program together, find that the typing of these commands becomes too tedious, or confirm that the baits generated actually cover the sequence 100%, open up this project in anaconda prompt and look at the jupyter notebook, BaitCoverNotebook.ipynb.
 
 For information on coverage metrics like workload and redundancy, the analyzer repo can be found here: https://github.com/mminbay/olta_analyzer/
