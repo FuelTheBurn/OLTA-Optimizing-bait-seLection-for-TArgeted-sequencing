@@ -90,6 +90,8 @@ megares_database_v3.00.fasta
 ```
 NOTE: AGAIN, DO NOT TYPE EVERYTHING ON ONE LINE, IT WON'T WORK
 
+If you want to include every nucleotide in the entire file, put -1 as the length
+
 Now there will be a wall of print statements, and at the end, the program might display something like:
 ```
 ERROR! some values not ACGT
@@ -104,8 +106,6 @@ megaresPartitions\megaresClean25E4.txt
 And we have restored the file we deleted
 
 By "around", the program will count 250000 nucleotides, and if it ends in the middle of a sequence, it will include the rest of the current sequence.
-
-If you want to include the entire sequence, put -1 as the length
 
 If you want to number the probes (assign them IDs), first compile numberProbes.cpp
 
