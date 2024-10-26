@@ -4,7 +4,7 @@ Finds a bait cover that covers 100% of a given sequence.
 Clone the repo. Inside of the OLTA-Optimizing-bait-seLection-for-TArgeted-sequencing folder do the following:
 ```
 cd MultithreadedGenerativeSearchV4WithInput
-g++ -O2 -pthread -o MultithreadedGenerativeSearchV4WithInput main.cpp
+g++ -std=c++14 -O2 -pthread -o MultithreadedGenerativeSearchV4WithInput main.cpp
 ```
 Ignore the warnings, as long as none of them are fatal
 
@@ -119,7 +119,5 @@ output.txt
 numberedOutput.txt
 ```
 NOTE: AGAIN, DO NOT TYPE EVERYTHING ON ONE LINE, IT WON'T WORK
-
-If you want to automate these processes, do the fasta conversion and run the main program together, find that the typing of these commands becomes too tedious, or confirm that the baits generated actually cover the sequence 100%, open up this project in anaconda prompt and look at the jupyter notebook, BaitCoverNotebook.ipynb.
 
 For information on coverage metrics like workload and redundancy, the analyzer repo can be found here: https://github.com/mminbay/olta_analyzer/
