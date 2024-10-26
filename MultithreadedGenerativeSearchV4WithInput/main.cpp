@@ -1,5 +1,16 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include <algorithm>
+//#include <bits/stdc++.h>
+#ifndef _GLIBCXX_NO_ASSERT
+#include <cassert>
+#endif
+
+#include <map>
+
+// #if __cplusplus >= 201103L
+#include <random>
+#include <thread>
+// #endif
 #include <stdio.h>
 #include <time.h>
 
@@ -265,11 +276,11 @@ bool wfc(vector<ll> indexes){
         for(int i=0;i<windowLength;i++){
             if(decided[i]==0){
                 print(indexes);
-                        cout<<"scoreboard"<<endl;
-                        for(const auto& entry: scoreboard){
-                            cout<<entry[0]<<" "<<entry[1]<<" "<<entry[2]<<endl;
-                        }
-                        cerr<<"error"<<endl;
+                cout<<"scoreboard"<<endl;
+                for(const auto& entry: scoreboard){
+                    cout<<entry[0]<<" "<<entry[1]<<" "<<entry[2]<<endl;
+                }
+                cerr<<"error"<<endl;
             }
             assert(decided[i]==1);
         }
@@ -676,7 +687,7 @@ void readInFile(){
             }
         }
         if(fileData.size()!=line.size()){
-            cerr<<" the fileData size and line size don't match"<<endl;
+            cerr<<" i dont even know anymore"<<endl;
         }
         stringDNA.pb(fileData);
     }
@@ -732,22 +743,46 @@ void generateRandomString(ll amount, ll length){
 vector<ll> searchBucketStart;
 vector<ll> searchBucketEnd;
 
-int main(){
-    cin>>windowLength;
-    cin>>maxRadius;
-    cin>>lenientRadius;
-    cin>>lenientRadius2;
-    cin>>overlapCount;
-    cin>>bypassHyperparameter;
-    int searchBreadthsSize;
-    cin>>searchBreadthsSize;
-    for(int i=0;i<searchBreadthsSize;i++){
-        ll sb;
-        cin>>sb;
+int main(int argc, char* argv[]){
+    if(argc<7){
+        cout<<"Missing arguments"<<endl;
+        return 0;
+    }
+    ipf=argv[1];
+    opf=argv[2];
+    windowLength=stoll(argv[3]);
+    maxRadius=stoll(argv[4]);
+    overlapCount=stoll(argv[5]);
+    ll searchBreadthsSize=stoll(argv[6]);
+    if(argc<searchBreadthsSize+7){
+        cout<<"Missing arguments"<<endl;
+        return 0;
+    }
+    for(int i=0;i<searchBreadthsSize;i++) {
+        ll sb = stoll(argv[7 + i]);
         searchBreadths.pb(sb);
     }
-    cin>>ipf;
-    cin>>opf;
+    //searchBreadthsSize+7 is the normal argc
+    if(searchBreadthsSize+7==argc){
+        lenientRadius=2*maxRadius;
+        lenientRadius2=2*maxRadius;
+        bypassHyperparameter=maxRadius;
+    }
+    else if(argc>=searchBreadthsSize+8 && argc<=searchBreadthsSize+9){
+        cout<<"Too many arguments, or you must have all 3 bonus arguments or none at all"<<endl;
+        return 0;
+    }
+    else if(argc==searchBreadthsSize+10){
+        lenientRadius=stoll(argv[searchBreadthsSize+7]);
+        lenientRadius2=stoll(argv[searchBreadthsSize+8]);
+        bypassHyperparameter=stoll(argv[searchBreadthsSize+9]);
+    }
+    else{
+        cout<<"Too many arguments"<<endl;
+        return 0;
+    }
+
+
     numThreads = std::thread::hardware_concurrency();
 
 
@@ -815,7 +850,7 @@ int main(){
     threadDomain.pb(tempDomain);
     cout<<"threadDomain"<<endl;
     for(auto& a:threadDomain){
-       cout<<"{"<<a.f.f<<"-"<<a.f.s<<" "<<a.s.f<<"-"<<a.s.s<<"} ";
+        cout<<"{"<<a.f.f<<"-"<<a.f.s<<" "<<a.s.f<<"-"<<a.s.s<<"} ";
     }
     cout<<endl;
     //the indexes from searchBreadths, assert(first<second)
