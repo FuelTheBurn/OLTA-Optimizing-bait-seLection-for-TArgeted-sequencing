@@ -1,3 +1,4 @@
+# NOTE: DOES NOT WORK CURRENTLY, AS WE ARE FIXING IT 
 # OLTA: Optimizing bait seLection for TArgeted sequencing
 Finds a bait cover that covers 100% of a given sequence.
 # How to set up on Windows with g++:
