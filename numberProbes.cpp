@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -48,10 +48,13 @@ void writeOutput() {
     std::cout << "Data written to the file successfully." << std::endl;
 }
 
-int main() {
-    cin >> inputFileName;
+int main(int argc, char* argv[]) {
+    if(argc!=3){
+        cerr<<"Wrong number of inputs!!!"<<endl;
+    }
+    inputFileName=string(argv[1]);
     
-    cin >> outputFileName;
+    outputFileName=string(argv[2]);
 
     readInFile();
     writeOutput();
