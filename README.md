@@ -23,23 +23,8 @@ The input reading is done with c++ cin
 
 The following input is suboptimal for the least number of baits/fast for demonstration purposes, to know what inputs you should use, read the paper
 ```
-.\MultithreadedGenerativeSearchV4WithInput.exe
-120
-40
-80
-80
-5
-40
-4
-10
-10
-10
-2
-megaresPartitions/megaresClean25E4.txt
-output.txt
+.\MultithreadedGenerativeSearchV4WithInput.exe megaresPartitions/megaresClean25E4.txt output.txt 120 40 5 4 10 10 10 2
 ```
-NOTE: DO NOT TYPE EVERYTHING ON ONE LINE, IT WON'T WORK
-
 In the wall of print statements, towards the end, you should see something that looks like this:
 ```
 Time measured: 6.073 seconds
@@ -52,19 +37,31 @@ output.txt contains the baits, it is now 457 lines long, and each line has 120 c
 Explanation of the inputs:
 ```
 .\MultithreadedGenerativeSearchV4WithInput.exe
+megaresPartitions/megaresClean25E4.txt -> Input file
+output.txt -> Output file
 120 -> Bait length
 40 -> Hamming distance mismatch tolerance
-80 -> Lenient radius, set this to 2 x (Hamming distance mismatch tolerance)
-80 -> Lenient radius 2, set this to 2 x (Hamming distance mismatch tolerance)
 5 -> Bucket size, THIS ONE MATTERS MOST, EXPLANATION BELOW
-40 -> Bypass hyperparameter, set this one to (Hamming distance mismatch tolerance)
-4 -> Number of search breadths/branching factors (Just keep these as constants)
+4 -> Number of search breadths/branching factors (Just keep these as constants), because it is 4, 4 numbers will follow
 10 -> First search breadth/branching factor
 10 -> Second search breadth/branching factor
 10 -> Third search breadth/branching factor
 2 -> Fourth search breadth/branching factor
-megaresPartitions/megaresClean25E4.txt -> Input file
-output.txt -> Output file
+```
+You can also run additional optional inputs like this:
+```
+.\MultithreadedGenerativeSearchV4WithInput.exe megaresClean25E4.txt output.txt 120 40 5 4 10 10 10 2 -lr1 80 -lr2 80 -bh 40 -t 8
+```
+Explanation of the additional optional inputs:
+```
+-lr1 80 -> Lenient radius, if not given, automatically set this to 2 x (Hamming distance mismatch tolerance)
+-lr2 80 -> Lenient radius 2, if not given, automatically set this to 2 x (Hamming distance mismatch tolerance)
+-bh 40 -> Bypass hyperparameter, if not given, automatically set this one to (Hamming distance mismatch tolerance)
+-t 8 -> Number of threads, if not given, automatically set this one to (std::thread::hardware_concurrency();)
+```
+You can mix and match the optional inputs. The order does not matter so long as they are all at the end, so the following would also work:
+```
+.\MultithreadedGenerativeSearchV4WithInput.exe megaresClean25E4.txt output.txt 120 40 5 4 10 10 10 2 -t 8 -bh 40 -lr2 80 
 ```
 There is a bait-time trade-off that can be adjusted depending on whether there is a need to reduce baits or reduce the running time by changing the bucket size. For our test configuration of bait length 120 and mismatch tolerance 40, the minimum number of baits occurs at bucket size 30. Run time is the least at bucket size 1 and is positively correlated with bucket size. For bait length 60 and mismatch tolerance 6, the number of baits is the least around bucket size 10. For other bait lengths and mismatch tolerances, play around.
 # The "modified" fasta file
