@@ -1,4 +1,3 @@
-# NOTE: DOES NOT WORK CURRENTLY, AS WE ARE FIXING IT 
 # OLTA: Optimizing bait seLection for TArgeted sequencing
 Finds a bait cover that covers 100% of a given sequence.
 # How to set up on Windows with g++:
@@ -72,7 +71,7 @@ The "modified" fasta file strips the sequence names, makes everything uppercase,
 
 To turn your fasta file into a modified fasta file compile dataCleaning:
 ```
-g++ -O2 -o dataCleaning dataCleaning.cpp
+g++ -std=c++14 -O2 -o dataCleaning dataCleaning.cpp
 ```
 Ignore the warnings, as long as none of them are fatal
 
@@ -110,7 +109,7 @@ By "around", the program will count 250000 nucleotides, and if it ends in the mi
 If you want to number the probes (assign them IDs), first compile numberProbes.cpp
 
 ```
-g++ -O2 -o numberProbes numberProbes.cpp
+g++ -std=c++14 -O2 -o numberProbes numberProbes.cpp
 ```
 Then run it by
 ```
