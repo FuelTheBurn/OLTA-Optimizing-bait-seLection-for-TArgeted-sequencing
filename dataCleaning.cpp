@@ -70,11 +70,7 @@ bool ckmax(int& a, int b){ return b > a ? a = b, true : false; }//returns false 
 //We just always do all, DNALength will be set by length of input
 //Actually DNALength does not really even matter, compressedWindowLength is the one that really matters
 
-const ll windowLength=120;
-const ll maxRadius=4;
-const ll lenientRadius=2*maxRadius;
-const ll DNAAmount=DNALength-windowLength+1;
-const ll lines=2388;
+
 //const ll naiveChecks=min(DNAAmount-1,100);
 
 
@@ -134,14 +130,10 @@ void readInFile(){
 				cout<<a<<endl;
 			}
 		}
-		if(fileData.size()<windowLength){
-			cout<<"short string"<<endl;
-			cerr<<"WE HAVE STRING LENGTH "<<fileData.size()<<" LESS THAN "<<windowLength<<" THAT WE ARE NOT INCLUDING"<<endl;
-		}
-		else{
+
 			//cout<<fileData.size()<<endl;
-			stringDNA.pb(fileData);
-		}
+		stringDNA.pb(fileData);
+
 		
 
     }
