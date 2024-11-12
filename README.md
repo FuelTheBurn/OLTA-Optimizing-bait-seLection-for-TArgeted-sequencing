@@ -2,7 +2,7 @@
 # OLTA: Optimizing bait seLection for TArgeted sequencing
 Finds a bait cover that covers 100% of a given sequence.
 # How to set up on Windows with g++:
-# For Linux, the Linux equivalent commands can be used. Note that if you use Linux, you will have to recreate the cleaned fasta file, megaresPartitions\megaresClean25E4.txt (explained below) because of an issue where linebreaks on Linux and Windows are different.
+For Linux, the Linux equivalent commands can be used. Note that if you use Linux, you will have to recreate the cleaned fasta file, megaresPartitions\megaresClean25E4.txt (explained below) because of an issue where linebreaks on Linux and Windows are different.
 Clone the repo. Inside of the OLTA-Optimizing-bait-seLection-for-TArgeted-sequencing folder do the following:
 ```
 cd MultithreadedGenerativeSearchV4WithInput
