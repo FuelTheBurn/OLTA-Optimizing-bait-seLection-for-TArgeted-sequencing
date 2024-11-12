@@ -82,10 +82,10 @@ bool ckmax(int& a, int b){ return b > a ? a = b, true : false; }//returns false 
 ll DNALength;//500000 100 60 is good test for random
 ll windowLength=120;
 ll maxRadius=40;//40
-ll lenientRadius=80;//80, hitByCoverSpace radius
-ll lenientRadius2=80;//80, early termination
+ll lenientRadius=-1;//80, hitByCoverSpace radius
+ll lenientRadius2=-1;//80, early termination
 ll overlapCount=15;
-ll bypassHyperparameter=40;//around maxRadius, skips wfc
+ll bypassHyperparameter=-1;//around maxRadius, skips wfc
 string ipf;//inputfile
 string opf;//outputfile
 //vector<ll> searchBreadths={-1,5,7,8,3,1,1};//make it so that if its out of bounds, its 1
@@ -130,7 +130,7 @@ vector<ll> stringStart;
 vector<ll> stringEnd;
 vector<pair<pair<ll,ll>,pair<ll,ll>>> threadDomain;
 ll stringCount;
-long long numThreads;
+long long numThreads=-1;
 vector<thread> threads;
 ll usedThreads;
 
@@ -315,6 +315,7 @@ bool wfc(vector<ll> indexes){
             return false;
         }
     }
+    return false;
 }
 
 
@@ -743,9 +744,10 @@ void generateRandomString(ll amount, ll length){
 vector<ll> searchBucketStart;
 vector<ll> searchBucketEnd;
 
-int main(int argc, char* argv[]){
-    if(argc<7){
-        cout<<"Missing arguments"<<endl;
+int main(int argc, char* argv[]) {
+    if(argc==1 || (argc==2 && argv[1]=="-h")) {
+        cout<<"run in the form "<<endl;
+        cout<<".\\MultithreadedGenerativeSearchV4WithInput.exe megaresPartitions/megaresClean25E4.txt output.txt 120 40 5 4 10 10 10 2"<<endl;
         return 0;
     }
     ipf=argv[1];
@@ -763,29 +765,40 @@ int main(int argc, char* argv[]){
         searchBreadths.pb(sb);
     }
     //searchBreadthsSize+7 is the normal argc
-    if(searchBreadthsSize+7==argc){
+    int cntr=searchBreadthsSize+7;
+    while(cntr<argc) {
+        //cout<<cntr<<endl;
+        //cout<<argv[cntr]<<endl;
+        if(string(argv[cntr])=="-lr1") {
+            lenientRadius=stoll(argv[cntr+1]);
+        }
+        else if(string(argv[cntr])=="-lr2") {
+            lenientRadius2=stoll(argv[cntr+1]);
+        }
+        else if(string(argv[cntr])=="-bh") {
+            bypassHyperparameter=stoll(argv[cntr+1]);
+        }
+        else if(string(argv[cntr])=="-t") {
+            numThreads=stoll(argv[cntr+1]);
+        }
+        cntr+=2;
+    }
+    if(lenientRadius==-1) {
+        cout<<"autoset lenientRadius"<<endl;
         lenientRadius=2*maxRadius;
+    }
+    if(lenientRadius2==-1) {
+        cout<<"autoset lenientRadius2"<<endl;
         lenientRadius2=2*maxRadius;
+    }
+    if(bypassHyperparameter==-1) {
+        cout<<"autoset bypassHyperparameter"<<endl;
         bypassHyperparameter=maxRadius;
     }
-    else if(argc>=searchBreadthsSize+8 && argc<=searchBreadthsSize+9){
-        cout<<"Too many arguments, or you must have all 3 bonus arguments or none at all"<<endl;
-        return 0;
+    if(numThreads==-1) {
+        cout<<"autoset numThreads"<<endl;
+        numThreads = std::thread::hardware_concurrency();
     }
-    else if(argc==searchBreadthsSize+10){
-        lenientRadius=stoll(argv[searchBreadthsSize+7]);
-        lenientRadius2=stoll(argv[searchBreadthsSize+8]);
-        bypassHyperparameter=stoll(argv[searchBreadthsSize+9]);
-    }
-    else{
-        cout<<"Too many arguments"<<endl;
-        return 0;
-    }
-
-
-    numThreads = std::thread::hardware_concurrency();
-
-
     cout<<"start"<<endl;
     srand(1);//I use 1 for all base tests
     //EITHER readInFile or generateRandomString, BUT NOT BOTH
@@ -917,26 +930,26 @@ int main(int argc, char* argv[]){
 
     printf("Time measured: %.3f seconds\n", elapsed);
     cout<<"Baits/Centroids: "<<compressedCovers.size()<<endl;
-    cout<<"average cluster size with no overlap"<<DNALength/(compressedCovers.size()*1.0)<<endl;
+    cout<<"average cluster size with no overlap: "<<DNALength/(compressedCovers.size()*1.0)<<endl;
 
     uncompress();
     writeOutput();
-    vector<ll> cumulativePredicted;
-    ll css=*max_element(actualCentroidSize.begin(),actualCentroidSize.end());
-    ll cps=*max_element(predictedCentroidSize.begin(),predictedCentroidSize.end());
-    cumulativeCentroidSize.rsz(css+5,0);
-    cumulativePredicted.rsz(cps+5,0);
-
-    for(auto& a:actualCentroidSize){
-        cumulativeCentroidSize[a]++;
-    }
-    for(auto& a:predictedCentroidSize){
-        cumulativePredicted[a]++;
-    }
-    cout<<"cumulative actual"<<endl;
-    print(cumulativeCentroidSize);
-    cout<<"cumulative predicted"<<endl;
-    print(cumulativePredicted);
+    // vector<ll> cumulativePredicted;
+    // ll css=*max_element(actualCentroidSize.begin(),actualCentroidSize.end());
+    // ll cps=*max_element(predictedCentroidSize.begin(),predictedCentroidSize.end());
+    // cumulativeCentroidSize.rsz(css+5,0);
+    // cumulativePredicted.rsz(cps+5,0);
+    //
+    // for(auto& a:actualCentroidSize){
+    //     cumulativeCentroidSize[a]++;
+    // }
+    // for(auto& a:predictedCentroidSize){
+    //     cumulativePredicted[a]++;
+    // }
+    // cout<<"cumulative actual"<<endl;
+    // print(cumulativeCentroidSize);
+    // cout<<"cumulative predicted"<<endl;
+    // print(cumulativePredicted);
     return 0;
 }
 
