@@ -688,7 +688,7 @@ void readInFile(){
             }
         }
         if(fileData.size()!=line.size()){
-            cerr<<" i dont even know anymore"<<endl;
+            cerr<<" error reading in the input, could be reading in new line characters incorrectly, characters that are not ACTGN/actgn, etc."<<endl;
         }
         stringDNA.pb(fileData);
     }
