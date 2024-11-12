@@ -83,11 +83,8 @@ del .\megaresPartitions\megaresClean25E4.txt
 ```
 And now recreate it:
 ```
-.\dataCleaning.exe
-250000
-megares_database_v3.00.fasta
+.\dataCleaning.exe megares_database_v3.00.fasta megaresPartitions\megaresClean25E4.txt 250000
 ```
-NOTE: AGAIN, DO NOT TYPE EVERYTHING ON ONE LINE, IT WON'T WORK
 
 If you want to include every nucleotide in the entire file, put -1 as the length
 
@@ -98,10 +95,6 @@ problem amount 30
 ```
 This error is fine, it just means that there are nucleotides in the fasta file that are not ACGT, and the program will replace them with N, representing an unknown nucleotide
 
-Afterwards, type in the output location:
-```
-megaresPartitions\megaresClean25E4.txt
-```
 And we have restored the file we deleted
 
 By "around", the program will count 250000 nucleotides, and if it ends in the middle of a sequence, it will include the rest of the current sequence.
@@ -113,10 +106,7 @@ g++ -std=c++14 -O2 -o numberProbes numberProbes.cpp
 ```
 Then run it by
 ```
-.\numberProbes
-output.txt
-numberedOutput.txt
+.\numberProbes output.txt numberedOutput.txt
 ```
-NOTE: AGAIN, DO NOT TYPE EVERYTHING ON ONE LINE, IT WON'T WORK
 
 For information on coverage metrics like workload and redundancy, the analyzer repo can be found here: https://github.com/mminbay/olta_analyzer/
