@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 #include <stdio.h>
 #include <time.h>
 
@@ -69,7 +69,7 @@ bool ckmax(int& a, int b){ return b > a ? a = b, true : false; }//returns false 
 
 //We just always do all, DNALength will be set by length of input
 //Actually DNALength does not really even matter, compressedWindowLength is the one that really matters
-ll DNALength=4000000;
+
 const ll windowLength=120;
 const ll maxRadius=4;
 const ll lenientRadius=2*maxRadius;
@@ -79,12 +79,12 @@ const ll lines=2388;
 
 
 vector<string> stringDNA;
-
-
+ll DNALength;
+string opFile;
+string inpFile;
 void readInFile(){
     // Open a text file for reading
-    string inpFile;
-    cin>>inpFile;
+    
     std::ifstream inputFile(inpFile);
     //std::ifstream inputFile("input.txt");
 
@@ -161,8 +161,13 @@ void readInFile(){
 }
 void writeOutput();
 
-int main(){
-	cin>>DNALength;
+int main(int argc, char* argv[]) {
+	if(argc!=4){
+		cerr<<"Wrong number of inputs!!!"<<endl;
+	}
+	inpFile=string(argv[1]);
+	opFile=string(argv[2]);
+	DNALength=stoll(argv[3]);
 	if(DNALength==-1){
 		DNALength=LLONG_MAX;
 	}
@@ -183,8 +188,7 @@ int main(){
 void writeOutput(){//first line is the DNA
 	//next line is N, number of baits
 	//next N lines are the baits
-	string opFile="megaresClean2E6.txt";
-	cin>>opFile;
+	
     ofstream outputFile(opFile);
 
     // Check if the file is open
