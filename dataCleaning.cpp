@@ -161,7 +161,7 @@ int main(int argc, char* argv[]) {
 	opFile=string(argv[2]);
 	DNALength=stoll(argv[3]);
 	if(DNALength==-1){
-		DNALength=LLONG_MAX;
+		DNALength=1e18;
 	}
 	readInFile();
 	// std::random_device rd;
