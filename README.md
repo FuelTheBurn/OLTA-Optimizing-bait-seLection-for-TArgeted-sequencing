@@ -94,6 +94,8 @@ If you want to include every nucleotide in the entire file, put -1 as the length
 
 Otherwise, the program will replace them with N, representing an unknown nucleotide. This means that if the hamming distance mismatch tolerance is set to 40, and bait length is set to 120, then in order for a bait to bind to a length 120 sequence with 5 N's in it, it must have a maximum hamming distance mismatch tolerance of 35 with the other known nucleotides.
 
+Note that if the number of N's in a bait length sequence is greater than the hamming distance mismatch tolerance, MultithreadedGenerativeSearchV4WithInput will throw an error accordingly.
+
 And we have restored the file we deleted
 
 By "around", the program will count 250000 nucleotides, and if it ends in the middle of a sequence, it will include the rest of the current sequence.
