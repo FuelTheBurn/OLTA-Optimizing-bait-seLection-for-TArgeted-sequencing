@@ -92,12 +92,7 @@ If you wish to remove unknown nucleotides, add -rn like this:
 
 If you want to include every nucleotide in the entire file, put -1 as the length
 
-Now there will be a wall of print statements, and at the end, the program might display something like:
-```
-ERROR! some values not ACGT
-problem amount 30
-```
-This error is fine, it just means that there are nucleotides in the fasta file that are not ACGT, and the program will replace them with N, representing an unknown nucleotide
+Otherwise, the program will replace them with N, representing an unknown nucleotide. This means that if the hamming distance mismatch tolerance is set to 40, and bait length is set to 120, then in order for a bait to bind to a length 120 sequence with 5 N's in it, it must have a maximum hamming distance mismatch tolerance of 35 with the other known nucleotides.
 
 And we have restored the file we deleted
 
