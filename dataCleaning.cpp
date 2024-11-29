@@ -78,6 +78,7 @@ vector<string> stringDNA;
 ll DNALength;
 string opFile;
 string inpFile;
+bool rn=false;
 void readInFile(){
     // Open a text file for reading
     
@@ -98,6 +99,7 @@ void readInFile(){
     ll badLetters=0;
     ll totalLength=0;
     ll lineCounter=0;
+    cout<<"Unknown characters: ";
     while (totalLength<DNALength && std::getline(inputFile, line)) {
     	lineCounter++;
     	if(lineCounter%2==1){
@@ -124,20 +126,19 @@ void readInFile(){
 				Ts++;
 			}
 			else{
-				fileData+='N';
-				Ns++;
+				if(!rn){
+					fileData+='N';
+					Ns++;					
+				}
 				badLetters++;
-				cout<<a<<endl;
+				cout<<a<<" ";
 			}
 		}
-
-			//cout<<fileData.size()<<endl;
-		stringDNA.pb(fileData);
-
 		
-
+		//cout<<fileData.size()<<endl;
+		stringDNA.pb(fileData);
     }
-
+    cout<<endl;
     // Close the file
     cout<<"Total length: "<<totalLength<<endl;
     cout<<"A: "<<As<<" C: "<<Cs<<" G: "<<Gs<<" Ts "<<Ts<<" Ns "<<Ns<<endl;
@@ -145,8 +146,16 @@ void readInFile(){
     	cout<<"all ACGT"<<endl;
     }
     else{
-    	cerr<<"ERROR! some values not ACGT"<<endl;
-    	cerr<<"problem amount "<<badLetters<<endl;
+    	cerr<<"You have unkown characters! some values not ACGT"<<endl;
+    	cerr<<"Unkown character amount "<<badLetters<<endl;
+    	if(rn){
+    		cerr<<"These were removed due to -rn"<<endl;
+    	}
+    	else{
+    		cerr<<"These were all changed to N, use -rn if you wish to remove them"<<endl;
+    	}
+    	
+
     }
     DNALength=totalLength-badLetters;
     inputFile.close();
@@ -154,12 +163,21 @@ void readInFile(){
 void writeOutput();
 
 int main(int argc, char* argv[]) {
-	if(argc!=4){
+	if(argc!=4 && argc!=5){
 		cerr<<"Wrong number of inputs!!!"<<endl;
 	}
 	inpFile=string(argv[1]);
 	opFile=string(argv[2]);
 	DNALength=stoll(argv[3]);
+	if(argc==5){
+		if(string(argv[4])=="-rn"){
+			cout<<"removing N"<<endl;
+			rn=true;
+		}
+		else{
+			cout<<"unknown argument"<<endl;
+		}
+	}
 	if(DNALength==-1){
 		DNALength=1e18;
 	}
