@@ -85,6 +85,10 @@ And now recreate it:
 ```
 .\dataCleaning.exe megares_database_v3.00.fasta megaresPartitions\megaresClean25E4.txt 250000
 ```
+If you wish to remove unknown nucleotides, add -rn like this:
+```
+.\dataCleaning.exe megares_database_v3.00.fasta megaresPartitions\megaresClean25E4.txt 250000 -rn
+```
 
 If you want to include every nucleotide in the entire file, put -1 as the length
 
