@@ -1008,7 +1008,7 @@ int main(int argc, char* argv[]) {
     // cout<<"cumulative predicted"<<endl;
     // print(cumulativePredicted);
     if(!fullCoverage) {
-        cout<<"Note: the coverage will not be 100% due to their being regions with more Ns than the max hamming distance tolerance"<<endl;
+        cout<<"Note: the coverage will not be 100% due to there being regions with more Ns than the max hamming distance tolerance"<<endl;
     }
     return 0;
 }
