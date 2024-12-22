@@ -144,6 +144,9 @@ vector<bool> covered;
 ll rangeStart=0;//inclusive
 ll rangeEnd=0;//exclusive
 //0 is A, 1 is T, 2 is C, 3 is G
+
+bool fullCoverage=true;
+
 void printB(vector<uint8_t > a){
     for (uint8_t value : a) {
         std::cout << " " << static_cast<int>(value);
@@ -182,6 +185,20 @@ int slowCompare2(vector<uint8_t> window1,ll window2){
     //cout<<endl;
     //cout<<"hd "<<hammingDistance<<endl;
     return hammingDistance;
+}
+int hasTooManyNs(ll window){
+    ll Ns=0;
+    for(int i=0;i<windowLength;i++){
+        if((windowDNA[window][i]==4)){
+            Ns++;
+        }
+    }
+    if(Ns>maxRadius) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 ll firstUncovered=0;
 ll coverThis;
@@ -373,6 +390,32 @@ void fillWeights(ll start,ll end){
             continue;
         }
         if (slowCompare2(bestCentroid, i) <= maxRadius){
+            acs.lock();
+            actualCentroidS++;
+            acs.unlock();
+            //cout<<"fill this and its neighbors "<<i<<endl;
+            ll leftS=leftSpan[i]+i;
+            ll rightS=rightSpan[i]+i;
+            assert(leftS>=0);
+            assert(leftS<windowCount);
+            assert(rightS>=0);
+            assert(rightS<windowCount);
+            for(ll j=leftS;j<=rightS;j++){
+                weight[j]=0;
+            }
+        }
+    }
+}
+
+void fillSectionsWithTooManyNs(ll start,ll end){
+    //cout<<"fillWeights "<<start<<" "<<end<<endl;
+    for(ll i=max(firstUncovered,start);i<=end;i++){
+        //cout<<"iterate through fill"<<endl;
+        if(weight[i]==0){
+            continue;
+        }
+        if (hasTooManyNs(i)){
+            fullCoverage=false;
             acs.lock();
             actualCentroidS++;
             acs.unlock();
@@ -625,7 +668,7 @@ void stringToCompressed(){
                 }
                 cmpS.pb(curWindowDNA[start+j]);
             }
-            assert(Ncounter<=maxRadius);
+            //assert(Ncounter<=maxRadius);
             windowDNA.pb(cmpS);
             weight.pb(1);
             windowCount+=1;
@@ -866,6 +909,20 @@ int main(int argc, char* argv[]) {
         cout<<"{"<<a.f.f<<"-"<<a.f.s<<" "<<a.s.f<<"-"<<a.s.s<<"} ";
     }
     cout<<endl;
+
+
+
+
+    threads.clear();
+    for(auto& a:threadDomain2){
+        threads.emplace_back([a](){
+            fillSectionsWithTooManyNs(a.f,a.s);
+        });
+    }
+    for(auto &a:threads){
+        a.join();
+    }
+    threads.clear();
     //the indexes from searchBreadths, assert(first<second)
     ll percentageDone=0;
 
@@ -950,6 +1007,9 @@ int main(int argc, char* argv[]) {
     // print(cumulativeCentroidSize);
     // cout<<"cumulative predicted"<<endl;
     // print(cumulativePredicted);
+    if(!fullCoverage) {
+        cout<<"Note: the coverage will not be 100% due to their being regions with more Ns than the max hamming distance tolerance"<<endl;
+    }
     return 0;
 }
 
