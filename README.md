@@ -1,5 +1,10 @@
 # OLTA: Optimizing bait seLection for TArgeted sequencing
 Finds a bait cover that covers 100% of a given sequence.
+
+Link to paper: TBA
+
+([Intuition behind the algorithm](https://docs.google.com/document/d/1adsqc5_eGKedFmZoRJNOyW5d8rmos0pYJiEGGI2z050/edit?usp=sharing))
+
 # How to set up on Windows with g++:
 For Linux, the Linux equivalent commands can be used. Note that if you use Linux, you will have to recreate the cleaned fasta file, megaresPartitions\megaresClean25E4.txt (explained below) because of an issue where newlines on Linux and Windows are different.
 
