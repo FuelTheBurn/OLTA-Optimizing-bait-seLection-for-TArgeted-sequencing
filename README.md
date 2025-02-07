@@ -59,7 +59,6 @@ Usage: MultithreadedGenerativeSearchV4WithInput <input> <output> <L> <d> <b> <k>
         b        Bucket size for OLTA.
         k        Number of search breadths for OLTA. There should be exactly k positional arguments following this.
         K_i      i'th search breadth for OLTA.
-.\MultithreadedGenerativeSearchV4WithInput.exe megaresPartitions/megaresClean25E4.txt output.txt 120 40 5 4 10 10 10 2
 
     Optional arguments:
         -lr1     Lenient radius 1 (default: d * 2).
