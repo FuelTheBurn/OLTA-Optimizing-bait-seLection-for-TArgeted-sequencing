@@ -1,7 +1,7 @@
 # OLTA: Optimizing bait seLection for TArgeted sequencing
 OLTA is a tool for computing capture probes for the targeted enrichment of DNA sequences.
 
-Link to paper: TBA
+[Link to paper](https://doi.org/10.1093/bioinformatics/btaf146)
 
 [Intuition behind the algorithm](https://docs.google.com/document/d/1adsqc5_eGKedFmZoRJNOyW5d8rmos0pYJiEGGI2z050/edit?usp=sharing)
 
